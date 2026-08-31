@@ -23,8 +23,17 @@
     { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
   );
 
+  // Conteúdo que já aparece na tela ao abrir a página não deve esperar o
+  // scroll pra revelar — só o que está abaixo da dobra usa o observer.
   elements.forEach(function (el) {
-    observer.observe(el);
+    var rect = el.getBoundingClientRect();
+    var alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (alreadyVisible) {
+      el.classList.add('is-visible');
+    } else {
+      observer.observe(el);
+    }
   });
 })();
 
