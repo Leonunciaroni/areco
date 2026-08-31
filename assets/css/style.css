@@ -343,11 +343,14 @@ section {
 .two-column-media {
   border-radius: var(--radius-images);
   overflow: hidden;
-  background-color: var(--color-anodized-graphite);
+  background-color: var(--color-areco-navy);
   aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.two-column-media video {
+.two-column-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
