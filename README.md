@@ -10,7 +10,6 @@ Hospedado como site estático no GitHub Pages.
 ## Estrutura
 
 - `index.html` — página inicial
-- `produtos/team.html` — página do produto arc Team
 - `assets/css/` — estilos
 - `assets/js/` — scripts
 - `assets/img/` — imagens
