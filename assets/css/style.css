@@ -69,10 +69,10 @@
   --element-gap: 24px;
 
   /* Border Radius */
-  --radius-lg: 8px;
-  --radius-cards: 8px;
-  --radius-images: 8px;
-  --radius-inputs: 8px;
+  --radius-lg: 20px;
+  --radius-cards: 20px;
+  --radius-images: 20px;
+  --radius-inputs: 20px;
   --radius-pill: 980px;
 
   /* Surfaces */
@@ -234,6 +234,23 @@ section {
   transform: translateY(0);
 }
 
+/* Cabeçalho — fundo azul-marinho pra logo branca ficar legível */
+.site-header {
+  background-color: var(--color-areco-navy);
+  padding-block: var(--spacing-16);
+}
+
+.site-header-logo {
+  display: inline-block;
+  line-height: 0;
+}
+
+.site-header-logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
 /* Hero */
 .hero {
   background-color: var(--color-frost);
@@ -274,6 +291,11 @@ section {
 
 .intro .caption {
   margin-bottom: var(--spacing-16);
+  font-size: var(--text-subheading);
+}
+
+.intro .body-text {
+  font-size: clamp(1.1875rem, 1.1rem + 0.5vw, 1.5rem);
 }
 
 /* Grid de cards de destaque — sem painel de card, imagem + tipografia flat */
@@ -384,6 +406,24 @@ section {
 .closing-cta .body-text {
   color: var(--color-linen-mist);
   margin-bottom: var(--spacing-32);
+}
+
+/* Rodapé — logo branca + copyright, fundo azul-marinho */
+.site-footer {
+  background-color: var(--color-areco-navy);
+  padding-block: var(--spacing-40);
+  text-align: center;
+}
+
+.site-footer-logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  margin: 0 auto var(--spacing-16);
+}
+
+.site-footer .caption {
+  color: var(--color-linen-mist);
 }
 
 /* Destaques — accordion vertical com imagem que troca por estado */
