@@ -59,3 +59,38 @@
     });
   });
 })();
+
+// Tabs de funcionalidades com imagem e lista que trocam por estado
+(function () {
+  var tabs = document.querySelectorAll('.funcionalidades-tab');
+  if (!tabs.length) {
+    return;
+  }
+
+  var images = document.querySelectorAll('.funcionalidades-image');
+  var lists = document.querySelectorAll('.funcionalidades-list');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      if (tab.classList.contains('is-active')) {
+        return;
+      }
+
+      var index = tab.getAttribute('data-index');
+
+      tabs.forEach(function (other) {
+        var isTarget = other === tab;
+        other.classList.toggle('is-active', isTarget);
+        other.setAttribute('aria-selected', String(isTarget));
+      });
+
+      images.forEach(function (img) {
+        img.classList.toggle('is-active', img.getAttribute('data-index') === index);
+      });
+
+      lists.forEach(function (list) {
+        list.classList.toggle('is-active', list.getAttribute('data-index') === index);
+      });
+    });
+  });
+})();
