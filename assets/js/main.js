@@ -60,15 +60,14 @@
   });
 })();
 
-// Tabs de funcionalidades com imagem e lista que trocam por estado
+// Tabs de funcionalidades — no mobile os grupos ficam todos empilhados (ver CSS)
 (function () {
   var tabs = document.querySelectorAll('.funcionalidades-tab');
   if (!tabs.length) {
     return;
   }
 
-  var images = document.querySelectorAll('.funcionalidades-image');
-  var lists = document.querySelectorAll('.funcionalidades-list');
+  var groups = document.querySelectorAll('.funcionalidades-group');
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
@@ -84,12 +83,8 @@
         other.setAttribute('aria-selected', String(isTarget));
       });
 
-      images.forEach(function (img) {
-        img.classList.toggle('is-active', img.getAttribute('data-index') === index);
-      });
-
-      lists.forEach(function (list) {
-        list.classList.toggle('is-active', list.getAttribute('data-index') === index);
+      groups.forEach(function (group) {
+        group.classList.toggle('is-active', group.getAttribute('data-index') === index);
       });
     });
   });

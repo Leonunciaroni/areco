@@ -576,10 +576,28 @@ section {
   border-bottom-color: var(--color-carbon);
 }
 
-.funcionalidades-grid {
+.funcionalidades-groups {
+  position: relative;
+  display: grid;
+}
+
+.funcionalidades-group {
+  grid-area: 1 / 1;
   display: flex;
   gap: var(--spacing-56);
   align-items: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.funcionalidades-group.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.funcionalidades-group-title {
+  display: none;
 }
 
 .funcionalidades-media {
@@ -596,17 +614,10 @@ section {
 }
 
 .funcionalidades-image {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.funcionalidades-image.is-active {
-  opacity: 1;
 }
 
 .funcionalidades-image.is-portrait {
@@ -614,24 +625,11 @@ section {
   padding: var(--spacing-24);
 }
 
-.funcionalidades-panels {
-  flex: 1;
-  display: grid;
-}
-
 .funcionalidades-list {
-  grid-area: 1 / 1;
+  flex: 1;
   list-style: none;
   margin: 0;
   padding: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.funcionalidades-list.is-active {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .funcionalidades-list li {
@@ -656,16 +654,40 @@ section {
 }
 
 @media (max-width: 767px) {
-  .funcionalidades-grid {
+  .funcionalidades-tabs {
+    display: none;
+  }
+
+  .funcionalidades-groups {
+    display: block;
+  }
+
+  .funcionalidades-group {
+    position: static;
+    grid-area: auto;
     flex-direction: column;
+    opacity: 1;
+    pointer-events: auto;
+    transition: none;
+    margin-bottom: var(--spacing-56);
+  }
+
+  .funcionalidades-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .funcionalidades-group-title {
+    display: block;
+    margin-bottom: var(--spacing-16);
   }
 
   .funcionalidades-media {
     flex-basis: auto;
     width: 100%;
+    margin-bottom: var(--spacing-24);
   }
 
-  .funcionalidades-panels {
+  .funcionalidades-list {
     width: 100%;
   }
 }
@@ -725,8 +747,7 @@ section {
   }
 
   .funcionalidades-tab,
-  .funcionalidades-image,
-  .funcionalidades-list {
+  .funcionalidades-group {
     transition: none;
   }
 }
