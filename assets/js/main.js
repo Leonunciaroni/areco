@@ -27,3 +27,35 @@
     observer.observe(el);
   });
 })();
+
+// Accordion de destaques com troca de imagem por estado
+(function () {
+  var items = document.querySelectorAll('.destaques-item');
+  if (!items.length) {
+    return;
+  }
+
+  var images = document.querySelectorAll('.destaques-image');
+
+  items.forEach(function (item) {
+    var trigger = item.querySelector('.destaques-item-trigger');
+
+    trigger.addEventListener('click', function () {
+      if (item.classList.contains('is-open')) {
+        return;
+      }
+
+      var index = item.getAttribute('data-index');
+
+      items.forEach(function (other) {
+        var isTarget = other === item;
+        other.classList.toggle('is-open', isTarget);
+        other.querySelector('.destaques-item-trigger').setAttribute('aria-expanded', String(isTarget));
+      });
+
+      images.forEach(function (img) {
+        img.classList.toggle('is-active', img.getAttribute('data-index') === index);
+      });
+    });
+  });
+})();
